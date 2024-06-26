@@ -1,6 +1,6 @@
 # Connectify
-🌐 Social Media Website
-🚀 Excited to share my latest project! 🚀
+##🌐 Social Media Website
+###🚀 Excited to share my latest project! 🚀
 
 I've developed a social media website using the MERN stack, integrating several modern technologies to create a seamless user experience.
 
