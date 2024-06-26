@@ -107,7 +107,7 @@ export const getSuggestedUsers = async (req, res) => {
 export const updateUser = async (req, res) => {
 
     const {fullname, email,username,currentPassword, newPassword, bio, link} = req.body;
-    let { profileImg, coverImg } = req.body;
+    let { profileImg, coverImage } = req.body;
     const userId = req.user._id;
 
     try {
@@ -144,13 +144,13 @@ export const updateUser = async (req, res) => {
             const uploadedResponce = await cloudinary.uploader.upload(profileImg)
             profileImg = uploadedResponce.secure_url;
         }
-        if(coverImg){
+        if(coverImage){
 
-            if(user.coverImg){
-                await cloudinary.uploader.destroy(user.coverImg.split("/").pop().split(".")[0]);
+            if(user.coverImage){
+                await cloudinary.uploader.destroy(user.coverImage.split("/").pop().split(".")[0]);
             }
-            const uploadedResponce = await cloudinary.uploader.upload(coverImg)
-            coverImg = uploadedResponce.secure_url;
+            const uploadedResponce = await cloudinary.uploader.upload(coverImage)
+            coverImage = uploadedResponce.secure_url;
 
         }
 
@@ -160,7 +160,7 @@ export const updateUser = async (req, res) => {
         user.bio = bio || user.bio;
         user.link = link || user.link;
         user.profileImg = profileImg || user.profileImg;
-        user.coverImg = coverImg || user.coverImg;
+        user.coverImage = coverImage || user.coverImage;
 
         user = await user.save();
 
